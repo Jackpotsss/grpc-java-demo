@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package news;
+
+option java_multiple_files = true;
+option java_package = "com.example.grpcclient.news.proto";
+option java_outer_classname = "NewsProto";
+
+//
+service MyService {
+
+  rpc sendMessageSingle (MyMemberRequest) returns (MyResponse) {}
+  rpc sendMessageServer (MyMemberRequest) returns (stream MyResponse) {}
+  rpc sendMessageClient (stream MyMemberRequest) returns (MyResponse) {}
+  rpc sendMessageBoth (stream MyMemberRequest) returns (stream MyResponse) {}
+}
+//
+message MyMemberRequest {
+  string name = 1;
+  uint32 age = 2;
+  bool isMember = 3;
+}
+
+message MyResponse {
+  string message = 1;
+}
+message ErrorInfo {// 通用异常处理信息
+  // 错误的业务编码
+  string errorCode  = 1;
+  // 默认提示信息
+  string defaultMsg = 2;
+}
