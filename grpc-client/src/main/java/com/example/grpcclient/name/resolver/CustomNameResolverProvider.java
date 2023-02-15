@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;
-@Component
 public class CustomNameResolverProvider extends NameResolverProvider {
 
-    @Autowired
-    private CustomNameResolver customNameResolver;
 
     @Override
     protected boolean isAvailable() {
@@ -24,7 +21,7 @@ public class CustomNameResolverProvider extends NameResolverProvider {
 
     @Override
     public NameResolver newNameResolver(URI targetUri, NameResolver.Args args) {
-        return customNameResolver;
+        return new CustomNameResolver(targetUri.toString());
     }
 
     @Override

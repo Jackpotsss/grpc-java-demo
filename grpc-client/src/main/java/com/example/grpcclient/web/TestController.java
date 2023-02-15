@@ -17,6 +17,11 @@ public class TestController {
         rpcClientService.sendMsgSimple();
         return "success";
     }
+    @RequestMapping("/client/sendMsgSimpleAsync")
+    public String sendMsgSimpleAsync() throws Exception  {
+        rpcClientService.sendMsgSimpleAsync();
+        return "success";
+    }
     @RequestMapping("/client/sendMsgServer")
     public String sendMsgServer() throws Exception  {
         rpcClientService.sendMsgServer();
